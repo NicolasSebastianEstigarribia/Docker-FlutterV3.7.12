@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
 import 'package:movie_admin/widgets/text_field_input.dart';
 import 'package:provider/provider.dart';
@@ -47,21 +46,22 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             height: 50,
             child: ElevatedButton(
-                onPressed: auth.login,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(3),
-                  ),
+              onPressed: auth.login,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3),
                 ),
-                child: const Text(
-                  'Iniciar sesión',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                )),
+              ),
+              child: const Text(
+                'Iniciar sesión',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),

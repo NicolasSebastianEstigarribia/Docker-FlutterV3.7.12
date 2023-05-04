@@ -4,7 +4,8 @@ import 'package:movie_admin/responsive/responsive_layout.dart';
 import 'package:movie_admin/responsive/web_screen.dart';
 import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
-import 'package:movie_admin/view_models/my_home_page_model.dart';
+
+import 'package:movie_admin/view_models/my_movies_model.dart';
 import 'package:movie_admin/views/login_page.dart';
 
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => MyViewModel()),
+        ChangeNotifierProvider(create: (_) => MyMoviesModel()),
         ChangeNotifierProvider(
           create: (_) => AuthViewModel(),
         ),
