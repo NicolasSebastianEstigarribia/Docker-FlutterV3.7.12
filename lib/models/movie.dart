@@ -1,59 +1,138 @@
+class Movie {
+  String? title;
+  String? year;
+  String? rated;
+  String? released;
+  String? runtime;
+  String? genre;
+  String? director;
+  String? writer;
+  String? actors;
+  String? plot;
+  String? language;
+  String? country;
+  String? awards;
+  String? poster;
+  List<Rating?>? ratings;
+  String? metascore;
+  String? imdbRating;
+  String? imdbVotes;
+  String? imdbID;
+  String? type;
+  String? dVD;
+  String? boxOffice;
+  String? production;
+  String? website;
+  String? response;
 
-class Movies {
-  Movies({
-    this.search,
-    this.totalResults,
+  Movie({
+    this.title,
+    this.year,
+    this.rated,
+    this.released,
+    this.runtime,
+    this.genre,
+    this.director,
+    this.writer,
+    this.actors,
+    this.plot,
+    this.language,
+    this.country,
+    this.awards,
+    this.poster,
+    this.ratings,
+    this.metascore,
+    this.imdbRating,
+    this.imdbVotes,
+    this.imdbID,
+    this.type,
+    this.dVD,
+    this.boxOffice,
+    this.production,
+    this.website,
     this.response,
   });
-   List<Search>? search;
-   String? totalResults;
-   String? response;
-  
-  Movies.fromJson(dynamic json){
-    search = List.from(json['Search']).map((e)=>Search.fromJson(e)).toList();
-    totalResults = json['totalResults'];
+
+  Movie.fromJson(Map<String, dynamic> json) {
+    title = json['Title'];
+    year = json['Year'];
+    rated = json['Rated'];
+    released = json['Released'];
+    runtime = json['Runtime'];
+    genre = json['Genre'];
+    director = json['Director'];
+    writer = json['Writer'];
+    actors = json['Actors'];
+    plot = json['Plot'];
+    language = json['Language'];
+    country = json['Country'];
+    awards = json['Awards'];
+    poster = json['Poster'];
+    if (json['Ratings'] != null) {
+      ratings = <Rating>[];
+      json['Ratings'].forEach((v) {
+        ratings!.add(Rating.fromJson(v));
+      });
+    }
+    metascore = json['Metascore'];
+    imdbRating = json['imdbRating'];
+    imdbVotes = json['imdbVotes'];
+    imdbID = json['imdbID'];
+    type = json['Type'];
+    dVD = json['DVD'];
+    boxOffice = json['BoxOffice'];
+    production = json['Production'];
+    website = json['Website'];
     response = json['Response'];
   }
 
-
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['Search'] = search!.map((e)=>e.toJson()).toList();
-    data['totalResults'] = totalResults;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Title'] = title;
+    data['Year'] = year;
+    data['Rated'] = rated;
+    data['Released'] = released;
+    data['Runtime'] = runtime;
+    data['Genre'] = genre;
+    data['Director'] = director;
+    data['Writer'] = writer;
+    data['Actors'] = actors;
+    data['Plot'] = plot;
+    data['Language'] = language;
+    data['Country'] = country;
+    data['Awards'] = awards;
+    data['Poster'] = poster;
+    data['Ratings'] =
+        ratings != null ? ratings!.map((v) => v?.toJson()).toList() : null;
+    data['Metascore'] = metascore;
+    data['imdbRating'] = imdbRating;
+    data['imdbVotes'] = imdbVotes;
+    data['imdbID'] = imdbID;
+    data['Type'] = type;
+    data['DVD'] = dVD;
+    data['BoxOffice'] = boxOffice;
+    data['Production'] = production;
+    data['Website'] = website;
     data['Response'] = response;
     return data;
   }
 }
 
-class Search {
-  Search({
-    required this.title,
-    required this.year,
-    required this.imdbID,
-    required this.type,
-    required this.poster,
-  });
-  late final String title;
-  late final String year;
-  late final String imdbID;
-  late final String type;
-  late final String poster;
-  
-  Search.fromJson(Map<String, dynamic> json){
-    title = json['Title'];
-    year = json['Year'];
-    imdbID = json['imdbID'];
-    type = json['Type'];
-    poster = json['Poster'];
+class Rating {
+  String? source;
+  String? value;
+
+  Rating({this.source, this.value});
+
+  Rating.fromJson(Map<String, dynamic> json) {
+    source = json['Source'];
+    value = json['Value'];
   }
 
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['Title'] = title;
-    data['Year'] = year;
-    data['imdbID'] = imdbID;
-    data['Type'] = type;
-    data['Poster'] = poster;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Source'] = source;
+    data['Value'] = value;
     return data;
   }
 }

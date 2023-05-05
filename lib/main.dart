@@ -31,9 +31,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Movie Admin',
-        theme: ThemeData.dark().copyWith(
+        theme: ThemeData.light().copyWith(
           useMaterial3: true,
-          scaffoldBackgroundColor: mobileBackgroundColor,
         ),
         home: Consumer<AuthViewModel>(
           builder: (context, authViewModel, child) {
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
               );
             } else {
               // usuario no autenticado, muestra la pantalla de login
-              return const LoginPage();
+              return LoginPage();
             }
           },
         ),

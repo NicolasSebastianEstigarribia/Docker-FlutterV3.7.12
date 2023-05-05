@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_admin/models/movie.dart';
+import 'package:movie_admin/models/movies.dart';
 import 'package:movie_admin/utils/colors.dart';
 
 import 'package:movie_admin/view_models/my_movies_model.dart';
 import 'package:movie_admin/widgets/spinner.dart';
 import 'package:provider/provider.dart';
-import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({super.key});
@@ -20,7 +19,7 @@ class MovieListState extends State<MovieList> {
   @override
   void initState() {
     super.initState();
-    Provider.of<MyMoviesModel>(context, listen: false).getData();
+    Provider.of<MyMoviesModel>(context, listen: false).getData(1);
   }
 
   @override
@@ -29,11 +28,9 @@ class MovieListState extends State<MovieList> {
       appBar: AppBar(
         elevation: 0.3,
         centerTitle: true,
-        backgroundColor: mobileBackgroundColor,
         title: const Text(
           'Movies',
           style: TextStyle(
-            color: mobileBackgroundColor,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -43,7 +40,7 @@ class MovieListState extends State<MovieList> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const MovieTitle(mobileBackgroundColor),
+            const MovieTitle(Colors.blue),
             Consumer<MyMoviesModel>(builder: (context, viewModel, child) {
               return (viewModel.movies.search != null)
                   ? Expanded(
@@ -52,17 +49,7 @@ class MovieListState extends State<MovieList> {
                         itemBuilder: (context, i) {
                           return ElevatedButton(
                             child: MovieCell(viewModel.movies.search![i]),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return MovieDetail(
-                                        viewModel.movies.search![i]);
-                                  },
-                                ),
-                              );
-                            },
+                            onPressed: () {},
                             //color: Colors.white,
                           );
                         },
@@ -117,15 +104,13 @@ class MovieCell extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   color: Colors.grey,
                   image: DecorationImage(
-                      image: NetworkImage(movie.poster), fit: BoxFit.cover),
+                      image: NetworkImage(movie.poster!), fit: BoxFit.cover),
                   boxShadow: const [
-                    BoxShadow(
-                        color: mobileBackgroundColor,
-                        blurRadius: 5.0,
-                        offset: Offset(2.0, 5.0))
+                    BoxShadow(blurRadius: 5.0, offset: Offset(2.0, 5.0))
                   ],
                 ),
-                child: Image.network(movie.poster, width: 100.0, height: 100.0),
+                child:
+                    Image.network(movie.poster!, width: 100.0, height: 100.0),
               ),
             ),
             Expanded(
@@ -135,15 +120,15 @@ class MovieCell extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title,
+                    movie.title!,
                     style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: mobileBackgroundColor),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const Padding(padding: EdgeInsets.all(2.0)),
                   Text(
-                    movie.imdbID,
+                    movie.imdbID!,
                     maxLines: 3,
                   )
                 ],

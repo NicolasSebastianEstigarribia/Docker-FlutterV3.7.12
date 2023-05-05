@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_admin/models/movie.dart';
+import 'package:movie_admin/models/movies.dart';
 import 'package:movie_admin/utils/globals.dart';
 
 import '../utils/config.dart';
@@ -15,9 +15,10 @@ class MyMoviesModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void getData() async {
+  void getData(int page) async {
+    String pag = page.toString();
     String apiKey = getApiKey();
-    String url = 'https://www.omdbapi.com/?apikey=$apiKey&s=movie';
+    String url = 'https://www.omdbapi.com/?apikey=$apiKey&s=movie&page=$pag';
 
     final response = await fetchResponse(url);
     Movies movi = Movies.fromJson(response);
