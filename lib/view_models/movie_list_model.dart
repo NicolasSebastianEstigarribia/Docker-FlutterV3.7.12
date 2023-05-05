@@ -7,27 +7,29 @@ import '../utils/config.dart';
 
 class MyMoviesModel with ChangeNotifier {
   int _pagenumber = 0;
-  Movies _movies = Movies();
+  List<Search> _movies = <Search>[];
 
-  Movies get movies => _movies;
+  List<Search> get movies => _movies;
   int get pagenumber => _pagenumber;
 
-  void updateMovies(Movies newMovies) {
-    _movies = newMovies;
+  void updateMovies(List<Search> newMovies) {
+    _movies.addAll(newMovies) ;
     notifyListeners();
   }
 
-  void getData(int page) async {
+  void getData() async {
     //Actualizamos el numero de pagina.
-    _pagenumber = page;
+    _pagenumber++;
 
-    String pag    = page.toString();
+    String pag    = _pagenumber.toString();
     String apiKey = getApiKey();
     String url = 'https://www.omdbapi.com/?apikey=$apiKey&s=movie&page=$pag';
     
     final response = await fetchResponse(url);
-    Movies movi    = Movies.fromJson(response);
-    updateMovies(movi);
+    Movies movies = Movies.fromJson(response);
+    List<Search> listSearch = movies.search!;
+    
+    updateMovies(listSearch);
     notifyListeners();
   }
   

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
 
-import 'package:movie_admin/view_models/my_movies_model.dart';
-import 'package:movie_admin/views/login_page.dart';
-import 'package:movie_admin/views/movie_list.dart';
+import 'package:movie_admin/view_models/movie_list_model.dart';
+import 'package:movie_admin/views/login/login_page.dart';
+import 'package:movie_admin/views/movie_list/movie_list.dart';
 
 import 'package:provider/provider.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Movie Admin',
         theme: ThemeData.light().copyWith(
           useMaterial3: true,
+          textTheme: GoogleFonts.ubuntuTextTheme(),
         ),
         home: Consumer<AuthViewModel>(
           builder: (context, authViewModel, child) {
