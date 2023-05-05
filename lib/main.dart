@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_admin/responsive/mobile_screen.dart';
-import 'package:movie_admin/responsive/responsive_layout.dart';
-import 'package:movie_admin/responsive/web_screen.dart';
-import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
 
 import 'package:movie_admin/view_models/my_movies_model.dart';
 import 'package:movie_admin/views/login_page.dart';
+import 'package:movie_admin/views/movie_list.dart';
 
 import 'package:provider/provider.dart';
 
@@ -38,13 +35,10 @@ class MyApp extends StatelessWidget {
           builder: (context, authViewModel, child) {
             if (authViewModel.isAuthenticated) {
               // usuario autenticado, muestra la pantalla principal
-              return const ResponsiveLayout(
-                mobileScreenLayout: MobileScreen(),
-                webScreenLayout: WebScreen(),
-              );
+              return const MovieList();
             } else {
               // usuario no autenticado, muestra la pantalla de login
-              return LoginPage();
+              return const LoginPage();
             }
           },
         ),

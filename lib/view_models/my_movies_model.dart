@@ -6,9 +6,11 @@ import 'package:movie_admin/utils/globals.dart';
 import '../utils/config.dart';
 
 class MyMoviesModel with ChangeNotifier {
+  int _pagenumber = 0;
   Movies _movies = Movies();
 
   Movies get movies => _movies;
+  int get pagenumber => _pagenumber;
 
   void updateMovies(Movies newMovies) {
     _movies = newMovies;
@@ -16,12 +18,15 @@ class MyMoviesModel with ChangeNotifier {
   }
 
   void getData(int page) async {
-    String pag = page.toString();
+    //Actualizamos el numero de pagina.
+    _pagenumber = page;
+
+    String pag    = page.toString();
     String apiKey = getApiKey();
     String url = 'https://www.omdbapi.com/?apikey=$apiKey&s=movie&page=$pag';
-
+    
     final response = await fetchResponse(url);
-    Movies movi = Movies.fromJson(response);
+    Movies movi    = Movies.fromJson(response);
     updateMovies(movi);
     notifyListeners();
   }

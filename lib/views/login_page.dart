@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
 import 'package:movie_admin/widgets/text_field.dart';
-import 'package:movie_admin/widgets/waze_clipper.dart';
+import 'package:movie_admin/widgets/clip_path.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
