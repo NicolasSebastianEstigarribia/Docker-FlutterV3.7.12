@@ -5,7 +5,8 @@ class PNetworkImage extends StatelessWidget {
   final String image;
   final BoxFit? fit;
   final double? width, height;
-  const PNetworkImage(this.image, {Key? key, this.fit, this.height, this.width})
+  final Alignment? alignment;
+  const PNetworkImage(this.image, {Key? key, this.fit, this.height, this.width, this.alignment})
       : super(key: key);
 
   @override
@@ -50,6 +51,7 @@ class PNetworkImage extends StatelessWidget {
             fit: BoxFit.cover,
             width: width,
             height: height,
+            alignment: alignment ?? Alignment.center,
           );
         },
       ),

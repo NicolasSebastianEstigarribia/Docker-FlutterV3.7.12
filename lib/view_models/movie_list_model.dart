@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movies.dart';
 import 'package:movie_admin/utils/globals.dart';
 
-import '../utils/config.dart';
+import '../utils/functions.dart';
 
-class MyMoviesModel with ChangeNotifier {
+class MoviesListModel with ChangeNotifier {
   int _pagenumber = 0;
-  List<Search> _movies = <Search>[];
+  final List<Search> _movies = <Search>[];
 
   List<Search> get movies => _movies;
   int get pagenumber => _pagenumber;

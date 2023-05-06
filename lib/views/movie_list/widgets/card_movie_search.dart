@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movies.dart';
+import 'package:movie_admin/animation_page.dart';
+import 'package:movie_admin/views/movie_detail/movie_detail.dart';
 import 'package:movie_admin/widgets/network_image.dart';
 
 class CardMovieSearch extends StatelessWidget {
@@ -10,7 +12,9 @@ class CardMovieSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        navigateTo(context, MovieDetail(imdbID: item.imdbID!));
+      },
       child: Stack(
         children: [
           PNetworkImage(

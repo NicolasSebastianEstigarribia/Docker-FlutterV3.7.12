@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
-import 'package:movie_admin/views/login/header_login.dart';
+import 'package:movie_admin/views/login/resourse/header_login.dart';
 import 'package:movie_admin/widgets/text_field.dart';
 import 'package:provider/provider.dart';
 
