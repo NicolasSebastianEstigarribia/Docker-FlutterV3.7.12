@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movie.dart';
 import 'package:movie_admin/utils/functions.dart';
 
-class DeparmentMovie extends StatelessWidget {
+class DepartmentMovie extends StatelessWidget {
   final Movie movie;
 
-  const DeparmentMovie({
-    super.key,
+  const DepartmentMovie({
+    Key? key,
     required this.movie,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,11 @@ class DeparmentMovie extends StatelessWidget {
     List<String> listActors = separateWords(movie.actors!);
 
     List<Widget> director = textString(listDirector);
-    List<Widget> write = textString(listWriter);
+    List<Widget> writer = textString(listWriter);
     List<Widget> actors = textString(listActors);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Text(
           'Department',
@@ -35,52 +36,38 @@ class DeparmentMovie extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              children: [
-                const Text(
-                  'Director',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Column(
-                  children: director,
-                )
-              ],
+            Expanded(
+              child: _buildColumnWithTitle('Director', director),
             ),
-            Column(
-              children: [
-                const Text(
-                  'Writer',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Column(
-                  children: write,
-                )
-              ],
+            Expanded(
+              child: _buildColumnWithTitle('Writer', writer),
             ),
-            Column(
-              children: [
-                const Text(
-                  'Actors',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Column(
-                  children: actors,
-                )
-              ],
-            )
+            Expanded(
+              child: _buildColumnWithTitle('Actors', actors),
+            ),
           ],
         ),
       ],
     );
   }
-}
 
+  Widget _buildColumnWithTitle(String title, List<Widget> items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 5),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: items,
+        ),
+      ],
+    );
+  }
+}

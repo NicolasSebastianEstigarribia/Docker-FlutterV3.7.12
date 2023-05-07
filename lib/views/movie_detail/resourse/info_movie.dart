@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movie.dart';
 
-import 'title_movie.dart';
+import 'container_title_movie.dart';
 
 class InfoMovie extends StatelessWidget {
   final Movie movie;
 
   const InfoMovie({
-    super.key,
+    Key? key,
     required this.movie,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

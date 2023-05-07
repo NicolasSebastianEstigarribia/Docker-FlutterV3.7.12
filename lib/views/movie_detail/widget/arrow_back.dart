@@ -4,23 +4,26 @@ import 'package:provider/provider.dart';
 
 class ArrowBack extends StatelessWidget {
   const ArrowBack({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 40, 
-      left: 10, 
-      child: IconButton(
-        onPressed: () {
-          Provider.of<MoviesDetailModel>(context, listen: false).clear();
-          Navigator.pop(context);
-        },
-        icon: const Icon(
-          Icons.arrow_back,
-          size: 45,
-          color: Colors.black,
+      top: 40,
+      left: 10,
+      child: Semantics(
+        label: 'Go Back',
+        child: IconButton(
+          onPressed: () {
+            Provider.of<MoviesDetailModel>(context, listen: false).clear();
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 45,
+            color: Colors.black,
+          ),
         ),
       ),
     );

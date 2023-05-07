@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class DegradeTopView extends StatelessWidget {
   const DegradeTopView({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,7 @@ class DegradeTopView extends StatelessWidget {
           colors: [Colors.white, Colors.transparent],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          stops: [
-            0.0,
-            0.3
-          ], // Puedes ajustar los valores de los stops según tus necesidades
+          stops: [0.0, 0.3], // Puedes ajustar los valores de los stops según tus necesidades
         ),
       ),
     );

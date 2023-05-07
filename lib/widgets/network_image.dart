@@ -6,7 +6,8 @@ class PNetworkImage extends StatelessWidget {
   final BoxFit? fit;
   final double? width, height;
   final Alignment? alignment;
-  const PNetworkImage(this.image, {Key? key, this.fit, this.height, this.width, this.alignment})
+  const PNetworkImage(this.image,
+      {Key? key, this.fit, this.height, this.width, this.alignment})
       : super(key: key);
 
   @override
@@ -16,7 +17,7 @@ class PNetworkImage extends StatelessWidget {
 
     return Container(
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        borderRadius: BorderRadius.all(Radius.circular(20.0)),
         boxShadow: [
           BoxShadow(
             color: Colors.grey,
@@ -25,35 +26,38 @@ class PNetworkImage extends StatelessWidget {
           ),
         ],
       ),
-      child: Image(
-        image: imageProvider,
-        fit: fit,
-        width: width,
-        height: height,
-        loadingBuilder: (BuildContext context, Widget child,
-            ImageChunkEvent? loadingProgress) {
-          if (loadingProgress == null) {
-            return child;
-          }
-          return Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!
-                  : null,
-            ),
-          );
-        },
-        errorBuilder:
-            (BuildContext context, Object exception, StackTrace? stackTrace) {
-          return Image.asset(
-            'assets/placeholder.jpg',
-            fit: BoxFit.cover,
-            width: width,
-            height: height,
-            alignment: alignment ?? Alignment.center,
-          );
-        },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: Image(
+          image: imageProvider,
+          fit: fit,
+          width: width,
+          height: height,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent? loadingProgress) {
+            if (loadingProgress == null) {
+              return child;
+            }
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            );
+          },
+          errorBuilder:
+              (BuildContext context, Object exception, StackTrace? stackTrace) {
+            return Image.asset(
+              'assets/placeholder.jpg',
+              fit: BoxFit.cover,
+              width: width,
+              height: height,
+              alignment: alignment ?? Alignment.center,
+            );
+          },
+        ),
       ),
     );
   }

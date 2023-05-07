@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/view_models/movie_detail_model.dart';
-import 'package:movie_admin/views/movie_detail/resourse/info_movie.dart';
 import 'package:movie_admin/views/movie_detail/resourse/decription_movie.dart';
 import 'package:movie_admin/views/movie_detail/resourse/deparment_movie.dart';
+import 'package:movie_admin/views/movie_detail/resourse/info_movie.dart';
 import 'package:movie_admin/views/movie_detail/widget/arrow_back.dart';
+import 'package:movie_admin/views/movie_detail/widget/degrate_top_view.dart';
 import 'package:movie_admin/widgets/network_image.dart';
 import 'package:movie_admin/widgets/spinner_widget.dart';
 import 'package:provider/provider.dart';
 
-import 'widget/degrate_top_view.dart';
-
 class MovieDetail extends StatefulWidget {
   final String imdbID;
-  const MovieDetail({super.key, required this.imdbID});
+
+  const MovieDetail({Key? key, required this.imdbID}) : super(key: key);
 
   @override
   State<MovieDetail> createState() => _MovieDetailState();
@@ -61,11 +61,11 @@ class _MovieDetailState extends State<MovieDetail> {
                         child: Column(
                           children: [
                             DescriptionMovie(
-                                description: viewModel.movie.plot!),
+                              description: viewModel.movie.plot!,
+                            ),
                             const SizedBox(height: 10),
-                            
                             const SizedBox(height: 10),
-                            DeparmentMovie(movie: viewModel.movie),
+                            DepartmentMovie(movie: viewModel.movie),
                           ],
                         ),
                       ),
