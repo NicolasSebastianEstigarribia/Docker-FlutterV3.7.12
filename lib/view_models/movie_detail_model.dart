@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movie.dart';
-import 'package:movie_admin/utils/globals.dart';
+import 'package:movie_admin/services/api_utils.dart';
+
 
 import '../utils/functions.dart';
 

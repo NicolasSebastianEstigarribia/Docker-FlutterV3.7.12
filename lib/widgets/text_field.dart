@@ -8,6 +8,7 @@ class PTextField extends StatelessWidget {
   final bool obscureText;
   final IconData icon;
   final String semanticLabel;
+  final String textValidator;
 
   const PTextField({
     Key? key,
@@ -17,6 +18,7 @@ class PTextField extends StatelessWidget {
     required this.icon,
     this.obscureText = true,
     required this.semanticLabel,
+    required this.textValidator,
   }) : super(key: key);
 
   @override
@@ -26,8 +28,8 @@ class PTextField extends StatelessWidget {
       child: Material(
         elevation: 2.0,
         borderRadius: const BorderRadius.all(Radius.circular(30)),
-        child: TextField(
-          onChanged: (value){},
+        child: TextFormField(
+          onChanged: (value) {},
           controller: textEditingController,
           keyboardType: textInputType,
           obscureText: obscureText,
@@ -49,6 +51,12 @@ class PTextField extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 25, vertical: 13),
           ),
+          validator: (value) {
+            if (value!.isEmpty) {
+              return textValidator;
+            }
+            return null;
+          },
         ),
       ),
     );

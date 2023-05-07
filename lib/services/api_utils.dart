@@ -2,9 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-const webScreenSize = 600;
-
-
 Future<dynamic> fetchResponse(String url) async {
   final response = await http.get(Uri.parse(url));
   

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_admin/view_models/auth_model.dart';
 import 'package:movie_admin/view_models/movie_list_model.dart';
 
 import 'package:movie_admin/widgets/spinner_widget.dart';
@@ -43,6 +44,10 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
+      ),
+      leading: IconButton(
+        icon: const Icon(Icons.exit_to_app),
+        onPressed: Provider.of<AuthViewModel>(context, listen: false).logout,
       ),
       centerTitle: true,
       elevation: 0.3,
