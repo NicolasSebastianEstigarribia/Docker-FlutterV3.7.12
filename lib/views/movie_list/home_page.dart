@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/view_models/auth_model.dart';
+import 'package:movie_admin/view_models/movie_detail_model.dart';
 import 'package:movie_admin/view_models/movie_list_model.dart';
 
 import 'package:movie_admin/widgets/spinner_widget.dart';

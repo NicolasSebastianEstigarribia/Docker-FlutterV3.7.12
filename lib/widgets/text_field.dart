@@ -8,7 +8,7 @@ class PTextField extends StatelessWidget {
   final bool obscureText;
   final IconData icon;
   final String semanticLabel;
-  final String textValidator;
+  final String? Function(String?)? validator;
 
   const PTextField({
     Key? key,
@@ -18,7 +18,7 @@ class PTextField extends StatelessWidget {
     required this.icon,
     this.obscureText = true,
     required this.semanticLabel,
-    required this.textValidator,
+    required this.validator,
   }) : super(key: key);
 
   @override
@@ -51,12 +51,7 @@ class PTextField extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 25, vertical: 13),
           ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return textValidator;
-            }
-            return null;
-          },
+          validator: validator,
         ),
       ),
     );

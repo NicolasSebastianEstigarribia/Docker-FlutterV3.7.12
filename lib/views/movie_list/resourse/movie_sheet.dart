@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/animation_page.dart';
 import 'package:movie_admin/models/movies.dart';
+import 'package:movie_admin/view_models/movie_detail_model.dart';
 import 'package:movie_admin/views/movie_detail/movie_detail.dart';
 import 'package:movie_admin/widgets/network_image.dart';
+import 'package:provider/provider.dart';
 
 class MovieSheet extends StatelessWidget {
   const MovieSheet({
@@ -17,10 +19,10 @@ class MovieSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateTo(
-        context,
-        MovieDetail(imdbID: currentMovie.imdbID!),
-      ),
+      onTap: () {
+        Provider.of<MoviesDetailModel>(context, listen: false).clearValue();
+        navigateTo(context, MovieDetail(imdbID: currentMovie.imdbID!));
+      },
       child: Align(
         alignment: Alignment.center,
         child: Transform.rotate(

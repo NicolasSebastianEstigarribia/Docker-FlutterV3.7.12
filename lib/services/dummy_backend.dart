@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<http.Response> loginRequest(String username, String password) {
   // Comprueba si el usuario y la contraseña son válidos
-  if (username == '123' && password == '123') {
+  if (username == 'dummy@example.com' && password == '123') {
     // Respuesta JSON exitosa
     final jsonResponse = {
       'sts': 1,

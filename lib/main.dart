@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
               return  const HomePage();
             } else {
               // usuario no autenticado, muestra la pantalla de login
-              return LoginPage();
+              return const LoginPage();
             }
           },
         ),

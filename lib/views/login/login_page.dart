@@ -34,12 +34,19 @@ class _LoginPageState extends State<LoginPage> {
           if (validApiResponse(context, jsonResponse)) {
             Provider.of<AuthViewModel>(context, listen: false).login();
           }
-          
         } else {
           alert(context, 'Error', 'Request Failed');
         }
       }
     }
+  }
+
+  @override
+  void initState() {
+
+    _emailController.text = 'dummy@example.com';
+    _passwordController.text = '123';
+    super.initState();
   }
 
   @override
@@ -58,7 +65,18 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: false,
               icon: Icons.email,
               semanticLabel: "Email Field",
-              textValidator: 'Enter your username',
+              validator: (value) {
+                // Expresión regular para validar un correo electrónico
+                RegExp emailRegex = RegExp(
+                    r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$');
+
+                if (value!.isEmpty) {
+                  return 'Enter your username';
+                } else if (!emailRegex.hasMatch(value)) {
+                  return 'Enter a valid email';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
             PTextField(
@@ -67,7 +85,12 @@ class _LoginPageState extends State<LoginPage> {
               textInputType: TextInputType.text,
               icon: Icons.lock,
               semanticLabel: 'Password Field',
-              textValidator: 'Enter your password',
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Enter your password';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 25),
             ButtonLogin(onPressed: submitForm),
