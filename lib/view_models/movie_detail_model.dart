@@ -19,15 +19,5 @@ class MoviesDetailModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void getData(String imdbID) async {
-    String apiKey = getApiKey();
-    String url = 'https://www.omdbapi.com/?apikey=$apiKey&i=$imdbID';
-
-    final response = await fetchResponse(url);
-    Movie movieObtained = Movie.fromJson(response);
-    return Future.delayed(const Duration(milliseconds: 700), () {
-      updateMovie(movieObtained);
-      notifyListeners();
-    });
-  }
+  
 }

@@ -19,14 +19,4 @@ class MoviesListModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void getData() async {
-    String apiKey = getApiKey();
-    String url = 'https://www.omdbapi.com/?apikey=$apiKey&s=movie';
-
-    final response = await fetchResponse(url);
-    Movies movies = Movies.fromJson(response);
-    List<Search> listSearch = movies.search!;
-
-    updateMovies(listSearch);
-  }
 }

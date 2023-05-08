@@ -1,5 +1,5 @@
-import 'integration/loginExitoso.dart';
-import 'integration/loginFailed.dart';
+import 'integration/successful_login.dart';
+import 'integration/unsuccessful_login.dart';
 import 'unit/separate_words.dart';
 import 'widgets/animation_page.dart';
 import 'widgets/p_clip_path.dart';
@@ -15,7 +15,6 @@ void main() {
   pElevatedButtonTest();
 
   //Integration Test
-  loginFailed();
-  loginExitoso();
-  
+  unsuccessfulLogin();
+  successfulLogin();
 }

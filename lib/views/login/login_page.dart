@@ -33,9 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           final jsonResponse = json.decode(response.body);
 
           if (validApiResponse(context, jsonResponse)) {
-            alert(context, 'successful', 'Request successful');  
-            
-            //Provider.of<AuthViewModel>(context, listen: false).login();
+            Provider.of<AuthViewModel>(context, listen: false).login();
           }
         } else {
           alert(context, 'Error', 'Request Failed');
@@ -61,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             const HeaderLoginPage(),
             const SizedBox(height: 30),
             PTextField(
-              key: Key('email_field'),
+              key: const Key('email_field'),
               textEditingController: _emailController,
               hintText: "Email",
               textInputType: TextInputType.emailAddress,
@@ -83,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 20),
             PTextField(
-              key: Key('password_field'),
+              key: const Key('password_field'),
               textEditingController: _passwordController,
               hintText: "Password",
               textInputType: TextInputType.text,
@@ -98,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 25),
             ButtonLogin(
-              key: Key('login_button'),
+              key: const Key('login_button'),
               textLogin: txtLogin,
               onPressed: submitForm,
             ),

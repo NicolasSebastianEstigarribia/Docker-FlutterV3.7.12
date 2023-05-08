@@ -49,7 +49,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
                   },
                   child: Text(
                     widget.textLogin,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: primaryColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 18,

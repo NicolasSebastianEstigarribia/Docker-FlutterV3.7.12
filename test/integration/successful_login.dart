@@ -3,13 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_admin/main.dart';
 
 
-void loginExitoso() {
+void successfulLogin() {
 
   testWidgets('Login form should perform an successful login',
       (WidgetTester tester) async {
     // Arrange
-    await tester
-        .pumpWidget(const MyApp());
+    await tester.pumpWidget(const MyApp());
 
     final emailField = find.byKey(const Key('email_field'));
     final passwordField = find.byKey(const Key('password_field'));
@@ -23,7 +22,5 @@ void loginExitoso() {
 
     // Assert
     expect(find.text('Movies'), findsOneWidget);
-    
   });
-
 }
