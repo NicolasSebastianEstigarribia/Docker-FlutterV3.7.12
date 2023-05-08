@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_admin/widgets/elevated_button.dart';
-import 'package:flutter_test/flutter_test.dart' show equalsButtonStyle;
 
 void pElevatedButtonTest() {
   testWidgets(

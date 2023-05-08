@@ -44,18 +44,20 @@ class _AnimateListViewState extends State<AnimateListView> {
 
         return Stack(
           children: [
-            Transform.rotate(
-              angle: rotationAngle,
-              child: PNetworkImage(
-                currentMovie.poster!,
-                height: MediaQuery.of(context).size.height * 0.6,
-                fit: BoxFit.cover,
-              ),
-            ),
             Container(
-              color: const Color.fromRGBO(0, 0, 0, 0.6),
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+              color: Colors.white,
+              child: Opacity(
+                opacity: 0.5,
+                child: Transform.rotate(
+                  angle: rotationAngle,
+                  child: PNetworkImage(
+                    currentMovie.poster!,
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
             ),
             MovieSheet(
               currentMovie: currentMovie,

@@ -12,14 +12,20 @@ class ArrowBack extends StatelessWidget {
       left: 10,
       child: Semantics(
         label: 'Go Back',
-        child: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 45,
-            color: Colors.black,
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 45,
+              color: Colors.black,
+            ),
           ),
         ),
       ),

@@ -32,8 +32,8 @@ class MovieSheet extends StatelessWidget {
             children: [
               PNetworkImage(
                 currentMovie.poster!,
-                height: MediaQuery.of(context).size.height * 0.45,
-                width: MediaQuery.of(context).size.width * 0.55,
+                height: MediaQuery.of(context).size.height * 0.6,
+                width: MediaQuery.of(context).size.width * 0.6,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 10),

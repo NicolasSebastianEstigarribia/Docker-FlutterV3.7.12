@@ -9,13 +9,16 @@ class DegradeTopView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.83,
+      height: 300,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.white, Colors.transparent],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          stops: [0.0, 0.3], // Puedes ajustar los valores de los stops según tus necesidades
+          stops: [
+            0.0,
+            0.3
+          ], // Puedes ajustar los valores de los stops según tus necesidades
         ),
       ),
     );

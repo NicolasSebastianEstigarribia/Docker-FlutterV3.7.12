@@ -21,6 +21,7 @@ class ContainerTitleMovie extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width / 0.3,
+      height: 180,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.grey[300],
@@ -30,7 +31,8 @@ class ContainerTitleMovie extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Semantics(
-            label: 'Movie Title', // Etiqueta de accesibilidad para el título de la película
+            label:
+                'Movie Title', // Etiqueta de accesibilidad para el título de la película
             child: Text(
               movie.title!,
               style: const TextStyle(
@@ -48,7 +50,8 @@ class ContainerTitleMovie extends StatelessWidget {
                   children: [
                     const Icon(Icons.star, color: Colors.amber, size: 24.0),
                     Semantics(
-                      label: 'IMDb Rating', // Etiqueta de accesibilidad para la calificación de IMDb
+                      label:
+                          'IMDb Rating', // Etiqueta de accesibilidad para la calificación de IMDb
                       value: '${movie.imdbRating!}/10',
                       child: Text('${movie.imdbRating!}/10'),
                     ),
@@ -57,7 +60,8 @@ class ContainerTitleMovie extends StatelessWidget {
               ),
               Flexible(
                 child: Semantics(
-                  label: 'Movie Rated', // Etiqueta de accesibilidad para la clasificación de la película
+                  label:
+                      'Movie Rated', // Etiqueta de accesibilidad para la clasificación de la película
                   child: Text('Restricted: ${movie.rated}'),
                 ),
               ),
@@ -68,7 +72,8 @@ class ContainerTitleMovie extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Semantics(
-                label: 'IMDb Votes', // Etiqueta de accesibilidad para los votos de IMDb
+                label:
+                    'IMDb Votes', // Etiqueta de accesibilidad para los votos de IMDb
                 child: Text(
                   'Votes ${movie.imdbVotes!}',
                   style: const TextStyle(

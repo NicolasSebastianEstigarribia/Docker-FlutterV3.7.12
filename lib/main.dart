@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           builder: (context, authViewModel, child) {
             if (authViewModel.isAuthenticated) {
               // usuario autenticado, muestra la pantalla principal
-              return  const HomePage();
+              return const HomePage();
             } else {
               // usuario no autenticado, muestra la pantalla de login
               return const LoginPage();
