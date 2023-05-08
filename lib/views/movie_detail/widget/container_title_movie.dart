@@ -21,7 +21,6 @@ class ContainerTitleMovie extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width / 0.3,
-      height: 180,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.grey[300],

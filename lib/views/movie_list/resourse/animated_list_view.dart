@@ -46,6 +46,7 @@ class _AnimateListViewState extends State<AnimateListView> {
           children: [
             Container(
               color: Colors.white,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: Opacity(
                 opacity: 0.5,
                 child: Transform.rotate(
@@ -59,9 +60,14 @@ class _AnimateListViewState extends State<AnimateListView> {
                 ),
               ),
             ),
-            MovieSheet(
-              currentMovie: currentMovie,
-              rotationAngle: rotationAngle,
+            Transform.translate(
+              offset: const Offset(0,
+                  -80), // Valor negativo para mover el Container hacia arriba
+
+              child: MovieSheet(
+                currentMovie: currentMovie,
+                rotationAngle: rotationAngle,
+              ),
             ),
           ],
         );

@@ -37,28 +37,21 @@ class MovieSheet extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 10),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.height *
-                      0.25, // Establece el ancho máximo deseado
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    currentMovie.title!,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  currentMovie.title!,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             ],
           ),
         ),

@@ -14,6 +14,12 @@ class _MyWidgetState extends State<PFloatingButton> {
   OverlayEntry? _overlayEntry;
 
   @override
+  void dispose() {
+    _hideMenu();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {

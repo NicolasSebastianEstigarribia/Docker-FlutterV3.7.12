@@ -15,48 +15,44 @@ class Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(20.0),
-                  bottomRight: Radius.circular(20.0),
-                ),
-                child: PNetworkImage(
-                  movie.poster!,
-                  fit: BoxFit.fill,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.6,
-                ),
+    return ListView(
+      children: [
+        Stack(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20.0),
+                bottomRight: Radius.circular(20.0),
               ),
-              const ArrowBack(),
-            ],
-          ),
-          Transform.translate(
-            offset: const Offset(
-                0, -90), // Valor negativo para mover el Container hacia arriba
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  ContainerTitleMovie(movie: movie),
-                  DescriptionMovie(
-                    description: movie.plot!,
-                  ),
-                  const SizedBox(height: 20),
-                  DepartmentMovie(movie: movie),
-                ],
+              child: PNetworkImage(
+                movie.poster!,
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.6,
               ),
             ),
+            const ArrowBack(),
+          ],
+        ),
+        Transform.translate(
+          offset: const Offset(
+              0, -90), // Valor negativo para mover el Container hacia arriba
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                ContainerTitleMovie(movie: movie),
+                DescriptionMovie(
+                  description: movie.plot!,
+                ),
+                const SizedBox(height: 20),
+                DepartmentMovie(movie: movie),
+              ],
+            ),
           ),
-          const SizedBox(height: 20),
-        ],
-      ),
+        ),
+        const SizedBox(height: 20),
+      ],
     );
   }
 }

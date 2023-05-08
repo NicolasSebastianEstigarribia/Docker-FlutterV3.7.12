@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$');
 
                 if (value!.isEmpty) {
-                  return 'Enter your username';
+                  return 'Enter your email';
                 } else if (!emailRegex.hasMatch(value)) {
                   return 'Enter a valid email';
                 }

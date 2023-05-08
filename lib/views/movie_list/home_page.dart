@@ -46,14 +46,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
-      body: SafeArea(
-        child: Consumer<MoviesListModel>(
-          builder: (context, viewModel, child) {
-            return (viewModel.movies.isNotEmpty)
-                ? AnimateListView(movies: viewModel.movies)
-                : const SpinnerWidget();
-          },
-        ),
+      body: Consumer<MoviesListModel>(
+        builder: (context, viewModel, child) {
+          return (viewModel.movies.isNotEmpty)
+              ? AnimateListView(movies: viewModel.movies)
+              : const SpinnerWidget();
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
