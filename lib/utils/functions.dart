@@ -6,6 +6,9 @@ String getApiKey() {
 }
 
 List<String> separateWords(String str) {
+  if (str.isEmpty) {
+    return [];
+  }
   return str.split(",").map((palabra) => palabra.trim()).toList();
 }
 

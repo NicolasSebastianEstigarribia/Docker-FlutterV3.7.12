@@ -3,11 +3,13 @@ import 'package:movie_admin/utils/colors.dart';
 import 'package:movie_admin/widgets/spinner_widget.dart';
 
 class ButtonLogin extends StatefulWidget {
+  final String textLogin;
   final Function() onPressed;
 
   const ButtonLogin({
     Key? key,
     required this.onPressed,
+    required this.textLogin,
   }) : super(key: key);
 
   @override
@@ -45,8 +47,8 @@ class _ButtonLoginState extends State<ButtonLogin> {
                           false; // Cambiar el estado de carga a false después de finalizar la acción
                     });
                   },
-                  child: const Text(
-                    "Login",
+                  child: Text(
+                    widget.textLogin,
                     style: TextStyle(
                       color: primaryColor,
                       fontWeight: FontWeight.w700,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movie.dart';
 
-import 'container_title_movie.dart';
+import '../widget/container_title_movie.dart';
 
 class InfoMovie extends StatelessWidget {
   final Movie movie;

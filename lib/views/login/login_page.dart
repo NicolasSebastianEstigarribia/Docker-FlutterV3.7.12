@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  String txtLogin = 'Login';
 
   void submitForm() async {
     if (_formKey.currentState!.validate()) {
@@ -32,7 +33,9 @@ class _LoginPageState extends State<LoginPage> {
           final jsonResponse = json.decode(response.body);
 
           if (validApiResponse(context, jsonResponse)) {
-            Provider.of<AuthViewModel>(context, listen: false).login();
+            alert(context, 'successful', 'Request successful');  
+            
+            //Provider.of<AuthViewModel>(context, listen: false).login();
           }
         } else {
           alert(context, 'Error', 'Request Failed');
@@ -43,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-
     _emailController.text = 'dummy@example.com';
     _passwordController.text = '123';
     super.initState();
@@ -59,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             const HeaderLoginPage(),
             const SizedBox(height: 30),
             PTextField(
+              key: Key('email_field'),
               textEditingController: _emailController,
               hintText: "Email",
               textInputType: TextInputType.emailAddress,
@@ -80,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 20),
             PTextField(
+              key: Key('password_field'),
               textEditingController: _passwordController,
               hintText: "Password",
               textInputType: TextInputType.text,
@@ -93,7 +97,11 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             const SizedBox(height: 25),
-            ButtonLogin(onPressed: submitForm),
+            ButtonLogin(
+              key: Key('login_button'),
+              textLogin: txtLogin,
+              onPressed: submitForm,
+            ),
           ],
         ),
       ),

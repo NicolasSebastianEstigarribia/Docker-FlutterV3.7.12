@@ -48,7 +48,7 @@ class _AnimateListViewState extends State<AnimateListView> {
               angle: rotationAngle,
               child: PNetworkImage(
                 currentMovie.poster!,
-                height: MediaQuery.of(context).size.height * 0.75,
+                height: MediaQuery.of(context).size.height * 0.6,
                 fit: BoxFit.cover,
               ),
             ),

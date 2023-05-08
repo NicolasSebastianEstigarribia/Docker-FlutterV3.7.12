@@ -33,14 +33,14 @@ class MovieSheet extends StatelessWidget {
               PNetworkImage(
                 currentMovie.poster!,
                 height: MediaQuery.of(context).size.height * 0.45,
-                width: MediaQuery.of(context).size.width * 0.45,
+                width: MediaQuery.of(context).size.width * 0.55,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 10),
               ConstrainedBox(
                 constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.height *
-                      0.3, // Establece el ancho máximo deseado
+                      0.25, // Establece el ancho máximo deseado
                 ),
                 child: Container(
                   decoration: BoxDecoration(
@@ -58,7 +58,7 @@ class MovieSheet extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             ],
           ),
         ),
