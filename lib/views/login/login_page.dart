@@ -5,7 +5,7 @@ import 'package:movie_admin/view_models/auth_model.dart';
 
 import 'package:movie_admin/views/login/resourse/header_login.dart';
 import 'package:movie_admin/views/login/widgets/button_login.dart';
-import 'package:movie_admin/widgets/text_field.dart';
+import 'package:movie_admin/views/login/widgets/text_field_login.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             const HeaderLoginPage(),
             const SizedBox(height: 30),
-            PTextField(
+            TextFieldLogin(
               key: const Key('email_field'),
               textEditingController: _emailController,
               hintText: "Email",
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             const SizedBox(height: 20),
-            PTextField(
+            TextFieldLogin(
               key: const Key('password_field'),
               textEditingController: _passwordController,
               hintText: "Password",

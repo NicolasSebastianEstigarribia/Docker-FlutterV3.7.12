@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'resourse/animated_list_view.dart';
 import 'resourse/floating_movie_list.dart';
 
+
 class MovieList extends StatefulWidget {
   const MovieList({super.key});
 
@@ -48,16 +49,15 @@ class _MovieListState extends State<MovieList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
-      body: Consumer<MoviesListModel>(
-        builder: (context, viewModel, child) {
-          return (viewModel.movies.isNotEmpty)
-              ? AnimateListView(movies: viewModel.movies)
-              : const SpinnerWidget();
-        },
-      ),
-      floatingActionButton: const FloatingMovieList(),
-    );
+        appBar: appBar(),
+        body: Consumer<MoviesListModel>(
+          builder: (context, viewModel, child) {
+            return (viewModel.movies.isNotEmpty)
+                ? AnimateListView(movies: viewModel.movies)
+                : const SpinnerWidget();
+          },
+        ),
+        floatingActionButton: const FloatingMovieList());
   }
 
   AppBar appBar() {
