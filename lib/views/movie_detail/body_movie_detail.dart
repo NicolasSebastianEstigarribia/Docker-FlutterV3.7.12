@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie_admin/models/movie.dart';
-import 'package:movie_admin/views/movie_detail/resourse/decription_movie.dart';
+import 'package:movie_admin/views/movie_detail/resourse/description_movie.dart';
 import 'package:movie_admin/views/movie_detail/resourse/deparment_movie.dart';
 
 import 'package:movie_admin/views/movie_detail/widget/arrow_back.dart';
 
-import 'package:movie_admin/widgets/network_image.dart';
 
-import 'widget/container_title_movie.dart';
+
+import 'resourse/data_movie.dart';
+import 'resourse/poster_movie.dart';
+import 'resourse/rating_movie.dart';
+import 'resourse/title_movie.dart';
 
 class Detail extends StatelessWidget {
   final Movie movie;
@@ -19,39 +22,26 @@ class Detail extends StatelessWidget {
       children: [
         Stack(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20.0),
-                bottomRight: Radius.circular(20.0),
-              ),
-              child: PNetworkImage(
-                movie.poster!,
-                fit: BoxFit.fill,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.6,
-              ),
-            ),
+            PosterMovie(poster: movie.poster!),
             const ArrowBack(),
           ],
         ),
         Transform.translate(
           offset: const Offset(
-              0, -90), // Valor negativo para mover el Container hacia arriba
+              0, -80), // Valor negativo para mover el Container hacia arriba
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                ContainerTitleMovie(movie: movie),
-                DescriptionMovie(
-                  description: movie.plot!,
-                ),
-                const SizedBox(height: 20),
+                TitleMovie(movie: movie),
+                DescriptionMovie(description: movie.plot!),
+                DataMovie(movie: movie),
                 DepartmentMovie(movie: movie),
+                RatingsWidget(ratings: movie.ratings!),
               ],
             ),
           ),
         ),
-        const SizedBox(height: 20),
       ],
     );
   }

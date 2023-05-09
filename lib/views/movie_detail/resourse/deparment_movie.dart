@@ -31,20 +31,14 @@ class DepartmentMovie extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: _buildColumnWithTitle('Director', director),
-            ),
-            Expanded(
-              child: _buildColumnWithTitle('Writer', writer),
-            ),
-            Expanded(
-              child: _buildColumnWithTitle('Actors', actors),
-            ),
+            _buildColumnWithTitle('Director', director),
+            _buildColumnWithTitle('Writer', writer),
+            _buildColumnWithTitle('Actors', actors),
           ],
         ),
       ],
@@ -52,22 +46,25 @@ class DepartmentMovie extends StatelessWidget {
   }
 
   Widget _buildColumnWithTitle(String title, List<Widget> items) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+    return Flexible(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 5),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: items,
-        ),
-      ],
+          const SizedBox(height: 5),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: items,
+          ),
+          const SizedBox(height: 5),
+        ],
+      ),
     );
   }
 }

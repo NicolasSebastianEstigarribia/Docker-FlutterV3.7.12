@@ -8,7 +8,7 @@ import 'package:movie_admin/views/login/login_page.dart';
 
 import 'package:provider/provider.dart';
 
-import 'views/movie_list/home_page.dart';
+import 'views/movie_list/movie_list.dart';
 
 void main() async {
   //WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           builder: (context, authViewModel, child) {
             if (authViewModel.isAuthenticated) {
               // usuario autenticado, muestra la pantalla principal
-              return const HomePage();
+              return const MovieList();
             } else {
               // usuario no autenticado, muestra la pantalla de login
               return const LoginPage();

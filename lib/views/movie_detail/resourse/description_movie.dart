@@ -14,8 +14,10 @@ class DescriptionMovie extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 10),
         Semantics(
-          label: 'Description', // Etiqueta de accesibilidad para la descripción de la película
+          label:
+              'Description', // Etiqueta de accesibilidad para la descripción de la película
           child: const Text(
             'Description',
             textAlign: TextAlign.center,
@@ -26,13 +28,11 @@ class DescriptionMovie extends StatelessWidget {
           ),
         ),
         Semantics(
-          label: 'Movie Description', // Etiqueta de accesibilidad para el texto de la descripción de la película
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0), // Agregar un pequeño espacio entre los textos
-            child: Text(
-              description,
-              style: const TextStyle(fontSize: 16),
-            ),
+          label:
+              'Movie Description', // Etiqueta de accesibilidad para el texto de la descripción de la película
+          child: Text(
+            description,
+            style: const TextStyle(fontSize: 16),
           ),
         ),
       ],

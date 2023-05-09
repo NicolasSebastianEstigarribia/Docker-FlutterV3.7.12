@@ -3,8 +3,8 @@ import 'package:movie_admin/models/movie.dart';
 import 'package:movie_admin/utils/functions.dart';
 import 'package:movie_admin/views/movie_detail/widget/container_genre_movies.dart';
 
-class ContainerTitleMovie extends StatelessWidget {
-  const ContainerTitleMovie({
+class TitleMovie extends StatelessWidget {
+  const TitleMovie({
     Key? key,
     required this.movie,
   }) : super(key: key);
@@ -89,10 +89,8 @@ class ContainerTitleMovie extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10.0),
-          Row(
-            children: containerGenre,
-          ),
+          const SizedBox(height: 5.0),
+          Row(children: containerGenre),
         ],
       ),
     );

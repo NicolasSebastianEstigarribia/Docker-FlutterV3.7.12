@@ -10,15 +10,16 @@ import 'package:movie_admin/widgets/spinner_widget.dart';
 import 'package:provider/provider.dart';
 
 import 'resourse/animated_list_view.dart';
+import 'resourse/floating_movie_list.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MovieList extends StatefulWidget {
+  const MovieList({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MovieList> createState() => _MovieListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MovieListState extends State<MovieList> {
   @override
   void initState() {
     getData();
@@ -34,8 +35,10 @@ class _HomePageState extends State<HomePage> {
       final response = await fetchResponse(url);
       Movies movies = Movies.fromJson(response);
       List<Search> listSearch = movies.search!;
-      Provider.of<MoviesListModel>(context, listen: false)
-          .updateMovies(listSearch);
+      if (context.mounted) {
+        Provider.of<MoviesListModel>(context, listen: false)
+            .updateMovies(listSearch);
+      }
     } catch (e) {
       // Manejo de la excepción
       alert(context, 'Error', e.toString());
@@ -53,10 +56,7 @@ class _HomePageState extends State<HomePage> {
               : const SpinnerWidget();
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const FloatingMovieList(),
     );
   }
 

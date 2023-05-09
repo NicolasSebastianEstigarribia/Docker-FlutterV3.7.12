@@ -13,7 +13,7 @@ class Movie {
   String? country;
   String? awards;
   String? poster;
-  List<Rating?>? ratings;
+  List<Rating>? ratings;
   String? metascore;
   String? imdbRating;
   String? imdbVotes;
@@ -103,7 +103,7 @@ class Movie {
     data['Awards'] = awards;
     data['Poster'] = poster;
     data['Ratings'] =
-        ratings != null ? ratings!.map((v) => v?.toJson()).toList() : null;
+        ratings != null ? ratings!.map((v) => v.toJson()).toList() : null;
     data['Metascore'] = metascore;
     data['imdbRating'] = imdbRating;
     data['imdbVotes'] = imdbVotes;

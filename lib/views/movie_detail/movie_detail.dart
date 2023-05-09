@@ -30,9 +30,10 @@ class _MovieDetailState extends State<MovieDetail> {
 
     final response = await fetchResponse(url);
     Movie movieObtained = Movie.fromJson(response);
-
-    Provider.of<MoviesDetailModel>(context, listen: false)
-        .updateMovie(movieObtained);
+    if (context.mounted) {
+      Provider.of<MoviesDetailModel>(context, listen: false)
+          .updateMovie(movieObtained);
+    }
   }
 
   @override
