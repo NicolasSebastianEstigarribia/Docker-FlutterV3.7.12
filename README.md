@@ -39,37 +39,56 @@ docker build -t movie .
 
 Si tienes algún problema o pregunta sobre la instalación de la aplicación, por favor, abre un issue en este repositorio y te ayudaremos a resolverlo.
 
-_Dependencies_
 
-When you want to run the `flutter-android-emulator` entrypoint your host must support KVM and have `xhost` installed.
+## Depuración inalámbrica
 
-### flutter (default)
+### Linux
 
-Executing e.g. `flutter help` in the current directory (appended arguments are passed to flutter in the container):
+1. Conecte su dispositivo Android a través de USB antes de abrir el contenedor de desarrollo.
+2. Conecte su dispositivo a través de USB y asegúrese de que la depuración esté habilitada, luego ejecute:
 
-```shell
-docker run --rm -e UID=$(id -u) -e GID=$(id -g) --workdir /project -v "$PWD":/project matspfeiffer/flutter help
+```sh
+adb tcpip 5555
 ```
 
-When you don't set the `UID` and `GID` the files will be owned by `G-/UID=1000`.
+3. Encuentre la dirección IP de su dispositivo, vaya a Configuración > Wi-Fi > Avanzado > Dirección IP en su dispositivo o ejecute `adb shell netcfg`.
+4. Conéctese al dispositivo usando la dirección IP con el siguiente comando:
 
-### flutter (connected usb device)
-
-Connecting to a device connected via usb is possible via:
-
-```shell
-docker run --rm -e UID=$(id -u) -e GID=$(id -g) --workdir /project -v "$PWD":/project --device=/dev/bus -v /dev/bus/usb:/dev/bus/usb movie devices
+```sh
+adb connect xxx.xxx.x.x
 ```
 
-### flutter-android-emulator
+5. Desconecte su dispositivo del USB y proceda con la depuración inalámbrica.
 
-To achieve the best performance we will mount the X11 directory, DRI and KVM device of the host to get full hardware acceleration:
+> Solución de problemas: puede intentar matar el demonio adb en su máquina host usando el comando `abd kill-server` y luego su contenedor debería tener acceso para enumerar el dispositivo.
 
-```shell
-xhost local:$USER && docker run --rm -ti -e UID=$(id -u) -e GID=$(id -g) -p 42000:42000 --workdir /project --device /dev/kvm --device /dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY -v "$PWD":/project --entrypoint flutter-android-emulator  movie
+##  Depuracion USB
+### Windows y Mac OS
+
+> En estos dos sistemas operativos no es posible compartir tu dispositivo USB con el contenedor, por lo que debemos recurrir a una forma alternativa.
+
+Primero, deberá tener las herramientas de plataformas que contienen ADB instaladas en su máquina host y puede descargarlas [aquí] (https://developer.android.com/studio/releases/platform-tools#downloads)
+
+1. Conecte su dispositivo a través de USB y asegúrese de que la depuración esté habilitada, luego ejecútelo en su máquina host:
+
+```sh
+adb tcpip 5555
 ```
 
+2. Busque la dirección IP de su dispositivo, vaya a Configuración > Wi-Fi > Avanzado > Dirección IP en su dispositivo o ejecute `adb shell netcfg`.
+3. Conéctese al dispositivo usando la dirección IP con el siguiente comando:
 
+```sh
+adb connect xxx.xxx.x.x
+```
 
+4. Desconecte el USB y proceda a abrir el contenedor dev en vscode.
+5. Ahora, dentro de su contenedor, ejecute el comando del paso 3 con la misma dirección IP.
+6. Verifique si el contenedor puede enumerar ahora su dispositivo usando `adb devices`.
 
+## Dummy Login - Ejemplo de Acceso de Prueba
+Este proyecto incluye un login de prueba denominado "dummy login" que permite el acceso a la aplicación utilizando datos de prueba predefinidos. A continuación se proporcionan detalles sobre cómo utilizarlo:
 
+Credenciales de Acceso
+Email: dummy@example.com
+Contraseña: 123
