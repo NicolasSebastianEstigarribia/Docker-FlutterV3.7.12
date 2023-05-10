@@ -8,12 +8,10 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 - Docker: [Instrucciones de instalación de Docker](https://docs.docker.com/get-docker/)
 
-## Pasos de instalación
-
-Sigue los siguientes pasos para instalar y ejecutar la aplicación Flutter dockerizada:
+## Pasos para crear la imagen docker:
 
 1. Clona este repositorio en tu máquina local:
-git clone <URL_DEL_REPOSITORIO>
+git clone [<URL_DEL_REPOSITORIO>](https://github.com/NicolasSebastianEstigarribia/Flutter-MovieAdmin/)
 
 2. Accede al directorio de la aplicación:
 cd <directorio_de_la_aplicacion>
@@ -21,16 +19,21 @@ cd <directorio_de_la_aplicacion>
 3. Construye la imagen Docker de la aplicación:
 docker build -t movie .
 
-4. Inicia un contenedor Docker basado en la imagen que acabas de construir:
-docker run -d -p 8080:8080 movie
+## Inicia un contenedor Docker basado en la imagen que acabas de construir:
 
+1. Instala la extensión "Remote - Containers" en Visual Studio Code. Puedes hacerlo yendo a la pestaña de extensiones (el ícono de cuatro cuadrados en la barra lateral izquierda) y buscando "Remote - Containers" en el marketplace de extensiones de VSC. Haz clic en Instalar y luego en Recargar para activar la extensión.
 
-Esto ejecutará la aplicación en un contenedor Docker y mapeará el puerto 8080 de tu máquina local al puerto 8080 del contenedor.
+2. Abre la carpeta del proyecto en Visual Studio Code. Asegúrate de que la carpeta contenga un archivo llamado Dockerfile que defina cómo se construye la imagen del contenedor.
 
-5. Abre tu navegador web y visita `http://localhost:8080` para ver y utilizar la aplicación Flutter.
+3. Haz clic en el ícono verde en la esquina inferior izquierda de Visual Studio Code. Esto abrirá el menú de comandos.
 
-¡Y eso es todo! Ahora deberías tener la aplicación Flutter dockerizada ejecutándose en tu máquina local. Si deseas detener la aplicación, puedes usar el siguiente comando:
-docker stop movie
+4. En el menú de comandos, busca y selecciona Remote-Containers: Reopen in Container (Reabrir en contenedor). Esto iniciará el proceso de construcción del contenedor basado en la imagen especificada en el Dockerfile.
+
+5. Espera a que se complete la construcción del contenedor. Durante este proceso, VSC descargará la imagen base del contenedor y ejecutará los comandos definidos en el Dockerfile.
+
+6. Una vez que se complete la construcción, VSC abrirá una nueva ventana dentro del contenedor. Esta ventana estará configurada para trabajar dentro del entorno del contenedor, lo que significa que podrás ejecutar comandos y editar archivos como si estuvieras trabajando directamente en el contenedor.
+
+¡Y eso es todo! Ahora estás trabajando dentro del contenedor basado en la imagen especificada, y puedes realizar tareas de desarrollo y pruebas dentro de ese entorno aislado.
 
 ## Problemas y preguntas
 
