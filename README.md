@@ -60,8 +60,6 @@ adb connect xxx.xxx.x.x
 
 5. Desconecte su dispositivo del USB y proceda con la depuración inalámbrica.
 
-> Solución de problemas: puede intentar matar el demonio adb en su máquina host usando el comando `abd kill-server` y luego su contenedor debería tener acceso para enumerar el dispositivo.
-
 ##  Depuracion USB
 ### Windows y Mac OS
 
@@ -90,5 +88,5 @@ adb connect xxx.xxx.x.x
 Este proyecto incluye un login de prueba denominado "dummy login" que permite el acceso a la aplicación utilizando datos de prueba predefinidos. A continuación se proporcionan detalles sobre cómo utilizarlo:
 
 Credenciales de Acceso
-Email: dummy@example.com
-Contraseña: 123
+- Email: dummy@example.com
+- Contraseña: 123
